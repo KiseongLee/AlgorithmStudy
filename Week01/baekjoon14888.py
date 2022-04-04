@@ -22,31 +22,25 @@ for i in range(len(operator_number)):
 
 operator_permutation = list(itertools.permutations(real_operator, len(real_operator)))
 
-operator_permutation_real = set(operator_permutation)
-operator_permutation_real = list(operator_permutation_real)
-
-# print(len(operator_permutation_real))
-# result = set(operator_permutation)
-# print(len(result))
-# print(result)
-
-
+# print(operator_permutation)
+# print(len(operator_permutation))
+# print(operator_permutation[0][0])
 
 total_list=[]
 total = number[0]
-for i in range(len(operator_permutation_real)):
-     for j in range(len(operator_permutation_real[i])):
+for i in range(len(operator_permutation)):
+     for j in range(len(operator_permutation[i])):
          
-         if operator_permutation_real[i][j] == '+':
+         if operator_permutation[i][j] == '+':
              total += number[j+1]
         
-         elif operator_permutation_real[i][j] == '-':
+         elif operator_permutation[i][j] == '-':
              total -= number[j+1]
 
-         elif operator_permutation_real[i][j] == '*':
+         elif operator_permutation[i][j] == '*':
              total *= number[j+1]
         
-         elif operator_permutation_real[i][j] == '/':
+         elif operator_permutation[i][j] == '/':
              total = int(total/number[j+1])
 
      total_list.append(total)
