@@ -1,4 +1,4 @@
-# 백트래킹
+# 백트래킹 : 해를 찾는 도중에 해가 아니여서 막히면 되돌아가서 해를 다시 찾는 기법
 # 임의의 집합에서 기준에 따라 원소의 순서를 선택
 # n - Queens
 # 임의의 집합(set) : 체스보드에 있는 n^2개의 가능한 위치
@@ -27,7 +27,6 @@ result = 0
 def promising(x):
 
     for i in range(x):
-        if x > i :
          if queen[x] == queen[i] or abs(queen[x] - queen[i]) == x - i:
                 return False
     

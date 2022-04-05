@@ -2,7 +2,7 @@ import sys
 
 N = int(input()) #도시의 개수
 travel_cost = [list(map(int, input().split())) for _ in range(N)]
-min_value = sys.maxsize #출력할 최소값 정의
+min_value = sys.maxsize #출력할 최소값 정의  # 첫번째 값이 무조건 갱신되야하는데 혹시라도 갱신이 안되는 오류가 발생할 수 있어서 가장 큰 사이즈를 넣어준다.
 
 
 def dfs_backtracking(start, next, value, visited): #시작도시번호,다음도시번호,비용,방문 도시
@@ -18,7 +18,6 @@ def dfs_backtracking(start, next, value, visited): #시작도시번호,다음도
         if travel_cost[next][i] != 0 and i not in visited and value < min_value: 
             visited.append(i) #그 도시를 방문목록에 추가
             dfs_backtracking(start, i, value + travel_cost[next][i], visited) #그 도시를 방문한다.
-            print(visited)
             visited.pop() #방문을 완료했다면 방문목록 해제
 
 

@@ -10,14 +10,14 @@ for i in range(n):
 
 arr = set()
 
-def recursion(cnt, per, visit):
+def recursion(cnt, per, visit):         
     
     if cnt == k:
         arr.add("".join(per))             #add라는 것을 써야함 (집합 자료형이기 때문이다.) append or insert는 리스트에 사용
         return
     
     for i in range(n):
-        if not visit[i]:
+        if not visit[i]:                                   #
             visit[i] = True
             recursion(cnt+1, per+[card_arr[i]], visit)     #리스트 끼리 더할 때는 서로 리스트 여야 한다
             visit[i] = False

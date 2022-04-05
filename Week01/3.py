@@ -1,16 +1,16 @@
-n, k = map(int, input().split())
+def move(n, start, to):
+    print(n, start, to)
+    
+def hanoi(n, start, to, via):
+    
+    if n == 1:
+        move(1, start, to)
+    
+    else:
+        hanoi(n-1, start, via, to)
+        move(n, start, to)
+        hanoi(n-1, via, to, start)
 
-a = list(map(int, input().split()))
-b = list(map(int, input().split()))
+n = int(input())
 
-a.sort()
-b.sort(reverse=True)
-
-for i in range(k):
-    a[i], b[i] = b[i], a[i]
-
-sum=0
-for i in a:
-    sum += i
-
-print(sum)
+hanoi(3, 1, 3, 2)
