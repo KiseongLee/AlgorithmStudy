@@ -82,6 +82,7 @@ def recursive(size, x , y):
     if size == 1:
         count += 1
         return
+    
     if not (x <= r < x+size and y <= c < y + size):
         count += size * size
         return
@@ -95,3 +96,5 @@ n, r, c = map(int, input().split())
 
 count = 0
 recursive(2**n, 0, 0)
+
+

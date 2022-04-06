@@ -24,4 +24,4 @@ def recursion(cnt, per, visit):
 
 
 recursion(0, [], [False]*n)
-print(arr)
+print(arr) 

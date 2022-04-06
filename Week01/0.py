@@ -1,44 +1,42 @@
-def merge_sort(array): 
-
-    if len(array)<=1: 
-        return array 
-    mid = len(array)//2 
-    left = merge_sort(array[:mid]) 
-    right = merge_sort(array[mid:]) 
-    
-    i, j, k = 0, 0, 0
-    
-    while i < len(left) and j < len(right): 
-        if left[i] < right[j]: 
-            array[k] = left[i]
-            i+=1 
-        else:
-            array[k] = right[j]
-            j += 1
-        k += 1
-        
-    if i == len(left):
-        while j < len(right):
-            array[k] = right[j]
-            j += 1
-            k += 1
-    elif j == len(right):
-        while i < len(left):
-            array[k] = left[i]
-            i += 1
-            k += 1
-    return array
+# 코딩 테스트 주의할 점
 
 
-N = int(input()) 
-arr=[]
+'''
 
-for _ in range(N): 
-    arr.append(int(input())) 
+1. 디버깅 포인트를 좁힌다
 
-arr = merge_sort(arr)
+A-B-C-D 단계에서 어디가 문제인지 파악하고 디버깅 포인트를 좁혀야함
 
-for i in arr: 
-    print(i)
+그래서 생각하고 문제를 풀어야한다.
+
+문제를 3단계 혹은 4단계로 정리하고 나누고 시작해야한다.
+
+2. 좁힌 범위를 논리적으로 분석하기
+
+특히나 범위가 조금 좁혀졌다고 생각하면 print를 계속하려고한다.
+왜 이 정보들을 출력하고 있었는지 잊어버린다.
+
+범위를 좁혔다면 논리적으로 코드를 분석해야한다. 
+
+문제를 해결하고자 하는 마음이 앞서면 안보인다
+
+--> 화장실을 가라
+
+아주 특정 케이스만 가지고 print 하고
+
+내가 그린 논리의 흐름과 현재 코드의 흐름이 어디서 다른지 파악해야한다.
+
+3. 예외케이스 TC를 직접 만들어 검증하기
+
+막상 제출하면 fail할 때, 약간의 절망감과 실망감이 든다.
+
+예외 케이스를 찾아야 한다.
+
+간단한 테이스 케이스를 짜는 연습을 해야한다.
+
+문제 설명으로 돌아가서 예외케이스를 점검해보고
+예외케이스를 점검해야함.
+
+'''
 
 

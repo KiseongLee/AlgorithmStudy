@@ -12,4 +12,4 @@ for i in range(n):
 for i in range(len(data)):
     if data[i] != 0:
         for j in range(data[i]):
-            print(i)
+            sys.stdout.write(str(i)+"\n")
