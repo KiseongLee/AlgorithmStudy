@@ -23,7 +23,7 @@ def dfs(x, idx, plus, minus, mul, div):
      if minus: dfs(x-value[idx], idx+1, plus, minus-1, mul, div)
      if mul : dfs(x*value[idx], idx+1, plus, minus, mul-1, div)
      if div : dfs(int(x/value[idx]), idx+1, plus, minus, mul, div-1)
-    
+                
  
 dfs(value[0], 1, oper[0], oper[1], oper[2], oper[3])
 print(max_value)
