@@ -18,8 +18,8 @@ def binary_sort(array, target, start, end):
             count += 1  
             break
         
-        if array[mid] == target:
-            return array[mid]
+        # if array[mid] == target:
+        #     return array[mid]
         
         elif array[mid] < target:
             start = mid +1
