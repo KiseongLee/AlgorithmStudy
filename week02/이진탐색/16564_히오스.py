@@ -76,3 +76,4 @@ def binary_sort(target, start, end):
 
 
 print(binary_sort(k, data[0], data[n-1]))
+

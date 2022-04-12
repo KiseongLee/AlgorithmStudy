@@ -37,7 +37,7 @@ def binary_sort(target, start, end):
     return end
 
 
-print(binary_sort(n, 0, data[m-1]))
+# print(binary_sort(n, 0, data[m-1]))
 
 
 # M, N = map(int, input().split())
