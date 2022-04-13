@@ -1,3 +1,61 @@
+# import sys
+# import heapq
+
+# n = int(input())
+# road_info = []
+# for _ in range(n):
+#     road = list(map(int, input().split()))
+#     road_info.append(road)
+
+# d = int(input())
+# roads = []
+# for road in road_info:
+#     house, office = road
+#     if abs(house - office) <= d:
+#         road = sorted(road)
+#         roads.append(road)
+        
+# roads.sort(key=lambda x:x[1])
+
+# 정보 받기
+#--------------------------------------------------
+
+# answer = 0
+# heap = []
+# for road in roads:
+#     if not heap:
+#         heapq.heappush(heap, road)
+#     else:
+#         while heap[0][0] < road[1] - d:
+#             heapq.heappop(heap)
+#             if not heap:
+#                 break
+#         heapq.heappush(heap, road)
+#     answer = max(answer, len(heap))
+
+# print(answer)
+# 철로 놓기 및 개수 세기
+
+
+
+'''
+1) 먼저 각 사무실, 집 정보를 roads에 저장할 때 사무실과 집의 거리가 d보다 크다면 d를 어떻게 움직여도
+포함될 수 없으므로 저장하지 않는다. d보다 작거나 같다면 좌표정보를 오름 차순으로 정렬해 저장해준다.
+
+2) 철로의 시작점을 가장 작은 것부터 시작할 수 있도록 roads를 본인의 원소 중 큰 원소를 기준으로 
+오름차순으로 정렬해준다. (앞서 말한 것처럼 더 멀리있는 좌표값에서 왼쪽으로 철로를 깔 것이기 때문에 더 멀리 있는 
+좌표값(= 큰원소)가 시작점이 된다.)
+
+3) 철로의 시작점을 가장 작은 것부터 순회하면서 차례대로 힙에 넣어주게 된다. 이 때 힙에 존재하는 가장 작은 값이
+철로의 끝점안에 있는지 확인해 철로 내에 있지 않다면 힙에서 제거한다.
+
+
+
+
+
+'''
+
+
 import heapq
 import sys
 input = sys.stdin.readline
@@ -23,9 +81,8 @@ for i in data:
         data2.append(i)                     # 걸러진 데이터를 새로운 리스트에 넣어주자
         
 data2.sort(key=lambda x : x[1])             # key point : 받은 데이터를 끝에 거리를 기준으로 오름차순으로 해줌 
-                                            # 철로를 깔 때, 앞에서부터 깔면 예외가 발생한다
-                                            # 예외 케이스 ) 1 4 / 1 4 / 2 5 / 3 4 answer:3 / 앞에것 오름차순하면 answer:2
-print(data2)
+                                            # 철로를 깔 때, 앞에 것부터 깔면서 가야하기 때문에
+
 answer = 0
 heap = []
 
