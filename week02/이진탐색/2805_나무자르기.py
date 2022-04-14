@@ -106,12 +106,49 @@ def binary_sort(array, target, start, end):
 print(binary_sort(data, m, 0, data[n-1]))
 '''
 
+# n, m = map(int, input().split())
+
+# data = list(map(int, input().split()))
+
+# data.sort()
+
+
+# def check(height):
+#     result = 0
+#     for i in range(n):
+#         if data[i] > height:
+#             result += data[i] - height
+#     return result
+        
+# def binary_sort(target, start, end):
+
+#     while start <= end:
+        
+#         mid = (start+end)//2
+        
+#         get = check(mid)
+        
+#         if get == target:
+#             return mid
+    
+#         elif get < target:
+#             end = mid -1
+        
+#         else:
+#             start = mid + 1
+            
+#     return end
+
+
+# print(binary_sort(m, 0, data[n-1]))
+
+
+
 n, m = map(int, input().split())
 
 data = list(map(int, input().split()))
 
 data.sort()
-
 
 def check(height):
     result = 0
@@ -119,25 +156,21 @@ def check(height):
         if data[i] > height:
             result += data[i] - height
     return result
-        
+
 def binary_sort(target, start, end):
 
     while start <= end:
         
         mid = (start+end)//2
+               
         
-        get = check(mid)
-        
-        if get == target:
-            return mid
-    
-        elif get < target:
-            end = mid -1
+        if check(mid) >= target:
+            start = mid + 1
         
         else:
-            start = mid + 1
+            
+            end = mid -1
             
     return end
-
 
 print(binary_sort(m, 0, data[n-1]))
