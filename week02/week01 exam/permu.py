@@ -48,3 +48,26 @@ def com(value, idx):
 com(0, -1)
 print(count)
 '''
+array = list(map(int, input().split()))
+
+n = int(input())
+
+visited = []
+count = 0
+def per(value, visited):
+    global count
+    for i in range(2, n):
+        if len(visited) == i :
+            print(visited)
+            count += 1
+        
+    
+    for i in range(len(array)):
+        if not array[i] in visited:
+            visited.append(array[i])
+            per(value+array[i], visited)
+            visited.pop()
+    
+
+per(0, visited)
+print(count)
