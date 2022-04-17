@@ -1,0 +1,47 @@
+import sys
+import heapq
+input = sys.stdin.readline
+INF = int(1e9)  
+
+
+m, n = map(int, input().split())
+graph = [list(map(int, input().rstrip())) for i in range(n)]
+distance = [[INF]*(m) for _ in range(n)]
+
+dx = [-1, 1, 0, 0]
+dy = [0, 0, -1, 1]
+
+def dijkstra():
+    
+    q =[]
+    # 시작 노드로 가기 위한 최단 경로는 0으로 설정하여, 큐에 삽입
+    heapq.heappush(q, (0, 0, 0))
+    distance[0][0] = 0
+    
+    while q:
+        cost, x, y = heapq.heappop(q)
+        if x == n - 1 and y == m - 1:
+            print(distance[n-1][m-1])
+            return
+
+        for i in range(4):
+            nx = x + dx[i]
+            ny = y + dy[i]
+            
+            if nx < 0 or ny < 0 or nx >= n or ny >= m:
+                continue
+            
+            new_cost = cost + graph[nx][ny]
+
+            if new_cost < distance[nx][ny]:
+                distance[nx][ny] = new_cost
+                heapq.heappush(q, (new_cost, nx, ny))
+            
+
+    
+
+# 다익스트라 알고리즘 수행
+dijkstra()
+
+# for i in range(len(distance)):
+#     print(distance[i])
