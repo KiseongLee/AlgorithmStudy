@@ -5,8 +5,6 @@ n, m = map(int, input().split())
 
 data = [list(map(int, input())) for i in range(n)]
 
-
-
 dx = [-1, 1, 0, 0]
 dy = [0, 0, -1, 1]
 

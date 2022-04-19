@@ -1,39 +1,36 @@
-
-import sys
-import heapq
 from collections import deque
+import sys
 input = sys.stdin.readline
 
-n = int(input().rstrip())
-m = int(input().rstrip())
-graph = [[] for i in range(n+1)]
-graph_inv = [[] for i in range(n+1)]
 
-distance = [0]*(n+1)
-edges = set()
+n, m = map(int, input().split())
 
-for _ in range(m):
-    a,b,c = map(int, input().split())
-    graph[a].append([b,c])
-    graph_inv[b].append([a,c])
+graph = [list(map(int, input().rstrip())) for _ in range(n)]
+
+visited = [False]*(n+1)
+check = [0] * (n+1)
+
+dx = [-1, 1, 0, 0]
+dy = [0, 0, -1, 1]
+
+def bfs(x,y):
+
+    q = deque()
+    q.append((x,y))
     
-start, end = map(int, input().split())
-
-def dijkstra(start):
-    
-    q =[]
-    heapq.heappush(q, [0, start])
-    distance[start] = 0
+  
+            
     while q:
-        dist, now = -heapq.heappop(q)
-        if distance[now] < dist:
-            continue
-        for i in graph[now]:
-            cost = dist + i[1]
-            if cost < distance[i[0]]:
-                distance[i[0]] = cost
-                heapq.heappush(q, (cost, i[0]))
-    
+       x,y = q.popleft()
+       
+       for i in range(4):
+        nx = x + dx[i]
+        ny = y + dy[i]
+        
+        if 0 <= nx < n and 0 <= ny < m:   
+          if graph[nx][ny] == 1:
+              graph[nx][ny] = graph[x][y] +1
+              q.append((nx,ny))
 
-dijkstra(start)
-print(distance)
+bfs(0,0)
+print(graph[n-1][m-1])

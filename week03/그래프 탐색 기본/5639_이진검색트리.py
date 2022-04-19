@@ -25,7 +25,7 @@ function : postorder(start, end)
 
 import sys
 
-sys.setrecursionlimit(10 ** 6)
+sys.setrecursionlimit(10 ** 9)
 
 preorder = []
 
