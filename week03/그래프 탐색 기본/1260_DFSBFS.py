@@ -39,9 +39,9 @@ for i in range(m):
     a, b = map(int, input().split())
     graph[a].append(b)
     graph[b].append(a)
-    graph[a].sort()
-    graph[b].sort()
-
+    graph[a].sort()     # 답이 정렬로 되어 있기 때문에 매우 중요
+    graph[b].sort()     # graph[a], [b] 따로 해줘야하는 이유는
+                        # list안에 list이기 떄문이다 graph자체를 해주면 바로 정렬이 흐트러진다!!@
 
 dfs(graph, v, visited_d)
 print()

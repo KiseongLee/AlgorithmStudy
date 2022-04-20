@@ -7,7 +7,6 @@ n, m = map(int, input().split())
 
 graph = [list(map(int, input().rstrip())) for _ in range(n)]
 
-visited = [False]*(n+1)
 check = [0] * (n+1)
 
 dx = [-1, 1, 0, 0]

@@ -1,3 +1,5 @@
+# 정리 필요
+
 n = int(input())
 
 inputs = [input().split() for _ in range(n)]

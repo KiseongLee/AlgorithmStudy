@@ -1,36 +1,29 @@
-from collections import deque
 import sys
 input = sys.stdin.readline
+sys.setrecursionlimit(10 ** 6)
 
 
-n, m = map(int, input().split())
+n = int(input())
+m = int(input())
 
-graph = [list(map(int, input().rstrip())) for _ in range(n)]
+graph = [[] for i in range(n+1)]
+for i in range(m):
+  a,b = map(int, input().split())
+  graph[a].append(b)
+  graph[b].append(a)
 
-visited = [False]*(n+1)
-check = [0] * (n+1)
+visited = [False] * (n+1)
 
-dx = [-1, 1, 0, 0]
-dy = [0, 0, -1, 1]
-
-def bfs(x,y):
-
-    q = deque()
-    q.append((x,y))
-    
+result = 0
+def dfs(start):
+  global result
+  visited[start] = True
   
-            
-    while q:
-       x,y = q.popleft()
-       
-       for i in range(4):
-        nx = x + dx[i]
-        ny = y + dy[i]
-        
-        if 0 <= nx < n and 0 <= ny < m:   
-          if graph[nx][ny] == 1:
-              graph[nx][ny] = graph[x][y] +1
-              q.append((nx,ny))
+  for i in graph[start]:
+    if not visited[i]:
+        dfs(i)
+        result +=1
 
-bfs(0,0)
-print(graph[n-1][m-1])
+dfs(1)
+   
+print(result)

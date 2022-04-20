@@ -13,7 +13,6 @@ for i in range(m):
     graph[a].append(b)
     graph[b].append(a)
 
-visited = [False]*(n+1)
 check = [0] * (n+1)
 
 def bfs(start):
