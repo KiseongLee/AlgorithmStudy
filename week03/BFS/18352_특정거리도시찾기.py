@@ -23,7 +23,7 @@ def bfs(graph, start, visited, distance):
             
             if not visited[i]:
                 
-                distance[i] = distance[v]+1
+                distance[i] = distance[v]+1         # distance 놓고 전에 거에 1 더하는 것이 핵심
                 queue.append(i)
                 visited[i] = True
                 

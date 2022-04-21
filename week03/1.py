@@ -1,29 +1,46 @@
+from collections import deque
 import sys
 input = sys.stdin.readline
-sys.setrecursionlimit(10 ** 6)
-
 
 n = int(input())
-m = int(input())
 
-graph = [[] for i in range(n+1)]
-for i in range(m):
-  a,b = map(int, input().split())
-  graph[a].append(b)
-  graph[b].append(a)
 
-visited = [False] * (n+1)
+graph =[list(map(int, input().rstrip())) for i in range(n)]
 
-result = 0
-def dfs(start):
-  global result
-  visited[start] = True
+distance = [[-1]*n for i in range(n)]
+
+dx = [-1, 1, 0, 0]
+dy = [0, 0, -1, 1]
+
+def bfs(x,y):
   
-  for i in graph[start]:
-    if not visited[i]:
-        dfs(i)
-        result +=1
+  q = deque()
+  q.append([x,y])
+  distance[0][0]=0
+  
+  while q:
+    x, y = q.popleft()
+    
+    for i in range(4):
+      nx = x + dx[i]
+      ny = y + dy[i]
+      
+      if 0<= nx < n and 0<= ny < n:
+        
+        if distance[nx][ny] == -1:
+          
+          if graph[nx][ny] == 1:
+             
+             distance[nx][ny] = distance[x][y]
+             q.appendleft([nx,ny])
+          
+          else:
+             distance[nx][ny] = distance[x][y]+1
+             q.append([nx,ny])
+             
+  return distance[n-1][n-1]
 
-dfs(1)
-   
-print(result)
+
+print(bfs(0,0))
+for i in range(len(distance)):
+  print(distance[i])

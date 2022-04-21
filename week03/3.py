@@ -1,54 +1,45 @@
-from collections import deque
-from sys import stdin
-input = stdin.readline
+import heapq
+import sys
+input = sys.stdin.readline
 
-N, M = map(int, input().split())
-cost = [[-1] * (M) for _ in range(N)]
-matrix = [list(map(int, input().strip())) for _ in range(N)]
-wall = [[0]*(M) for _ in range(N)]
+n, m = map(int, input().split())
 
-dx = [-1, 1, 0, 0]
-dy = [0, 0, -1, 1]
+graph = [[] for i in range(n+1)]
+for i in range(m):
+    a, b, c = map(int, input().split())
+    graph[a].append([b,c])
+    graph[b].append([a,c])
 
-q = deque([[0,0]])
-cost[0][0] = 1
+distance = [0]*(n+1)
+X,Y = map(int, input().split())
 
 
-while q : 
-    x,y = q.popleft()
+def bfs(b, start):
     
-    for i in range(4):
-        nx = x + dx[i]
-        ny = y + dy[i]
-        
-        if nx < 0 or nx > N-1 or ny < 0 or ny > M-1 : continue
-        
-        if cost[nx][ny] == -1:    
-            if matrix[nx][ny] == 0 : 
-               cost[nx][ny] = cost[x][y] +1 
-               q.appendleft([nx,ny])
-           
-        
-            if matrix[nx][ny] == 1:
+    q = []
+    heapq.heappush(q, [b, start])
     
-                cost[nx][ny] = cost[x][y] +1
-                wall[nx][ny] = wall[x][y] +1
+    
+    while q:
+        
+        cost, index = heapq.heappop(q)
+    
+        
+        for x,y in graph[index]:
             
-                if wall[nx][ny] < 2:
-                     q.append([nx,ny])
-                else:
-                  continue
-
-print(cost[N-1][M-1])
-for i in range(len(cost)):
-    print(cost[i])
-for i in range(len(wall)):
-    print(wall[i])   
-
-'''
-4 4
-0101
-0101
-0001
-1110
-'''
+            if cost == 0:
+                distance[x] = y
+                heapq.heappush(q, [-distance[x], x])
+                continue
+            
+            if -cost > y :
+              if distance[x] < y:
+                  distance[x] =y
+                  heapq.heappush(q, [-distance[x], x])
+            else:
+              if distance[x] < -cost:
+                 distance[x] = -cost
+                 heapq.heappush(q, [-distance[x], x])
+                    
+bfs(0, X)               
+print(distance[Y])
