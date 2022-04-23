@@ -31,3 +31,5 @@ if not result:
     print(-1)
 else: 
     print(min(result))
+
+print(result)
