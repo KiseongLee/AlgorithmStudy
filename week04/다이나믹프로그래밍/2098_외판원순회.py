@@ -7,8 +7,9 @@
 import sys
 A = []
 def go(now, trace):
-    if dp[now][trace]:
-        return dp[now][trace]
+
+    if dp[now][trace]: # now는 현재 도시 trace는 몇번째 방문한 것인가
+        return dp[now][trace] # dp에 이미 값이 있으면 당연히 리턴해야함  
     if trace == (1<<N)-1: # 모든 도시 방문 완료 시,
         return path[now][0] if path[now][0] > 0 else MAX
         # 마지막 도시에서 출발도시로 가는 비용 리턴
@@ -16,7 +17,7 @@ def go(now, trace):
     cost = MAX
     for i in range(1, N):
         if not trace & (1<<i) and path[now][i]:
-            # 비트 마스크를 이용한 방문 확인
+            # 비트 마스크를 이용한 방문 확인 
             val = go(i, trace | (1<<i))
             cost = min(cost, val+path[now][i])
     
@@ -31,7 +32,7 @@ MAX = sys.maxsize
 
 print(go(0,1))
 
-print(dp)
+
 
 # 구체적인 경로는 중요하지 않다.
 # 중복 확인
