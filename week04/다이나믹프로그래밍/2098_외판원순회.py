@@ -36,3 +36,8 @@ print(go(0,1))
 
 # 구체적인 경로는 중요하지 않다.
 # 중복 확인
+
+
+
+#https://shoark7.github.io/programming/algorithm/introduction-to-tsp-and-solve-with-exhasutive-search
+#https://shoark7.github.io/programming/algorithm/solve-tsp-with-dynamic-programming
