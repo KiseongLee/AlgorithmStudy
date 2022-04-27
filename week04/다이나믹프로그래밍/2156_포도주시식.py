@@ -15,5 +15,5 @@ if n>= 3:
 
 for i in range(4, n+1):
     dp[i] = max(dp[i-2]+data[i], dp[i-3]+data[i-1]+data[i], dp[i-1])
-
+    # 자기 자신을 안먹었을 때까지 비교를 해줘야한다. 이게 핵심
 print(dp[-1])
