@@ -5,7 +5,7 @@ n, k = map(int, input().split())
 graph = [list(map(int, input().split())) for i in range(n)]
 visited = [[False]*n for i in range(n)]
 virus = []
-s, x, y = map(int, input().split())
+s, a, b = map(int, input().split())
 
 dx = [-1, 1, 0, 0]
 dy = [0, 0, -1, 1]
@@ -16,7 +16,7 @@ def bfs():
   
     while q:
         
-        x,y,a,sec = q.popleft()
+        a,x,y,sec = q.popleft()
         
         if sec == s:
             break
@@ -32,15 +32,15 @@ def bfs():
                 if visited[nx][ny] == False and graph[nx][ny] == 0:
                     visited[nx][ny] = True
                     graph[nx][ny] = a
-                    q.append([nx,ny,graph[nx][ny],sec])
+                    q.append([graph[nx][ny],nx,ny,sec])
     
         
 
 for i in range(n):
     for j in range(n):
         if graph[i][j] != 0:
-            virus.append([i ,j , graph[i][j], 0])
+            virus.append([graph[i][j],i ,j, 0])
 
 virus.sort()
 bfs()
-print(graph[x-1][y-1])
+print(graph[a-1][b-1])
