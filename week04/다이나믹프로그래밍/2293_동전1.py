@@ -17,4 +17,4 @@ for i in range(1, len(coin)):
     for j in range(coin[i], k+1):
         dp[j] += dp[j-coin[i]]
 
-print(dp[k])
+print(dp)

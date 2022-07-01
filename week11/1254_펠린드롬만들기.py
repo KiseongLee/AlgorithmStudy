@@ -37,8 +37,9 @@ s = input()
 
 for i in range(len(s)):
     tmp = s + s[:i][::-1]
-    print(s[:i][::-1])
+    # print(s[:i][::-1])
     print(tmp)
+    print(i)
     if tmp == tmp[::-1]:
         print(len(tmp))
         break
