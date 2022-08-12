@@ -1,4 +1,6 @@
 
+# dp[i] = i번째 까지 LIS의 수
+
 n = int(input())
 
 data = list(map(int, input().split()))
@@ -10,6 +12,6 @@ for i in range(1, n):
         if data[i] > data[j]:
             dp[i] = max(dp[i], dp[j]+1)
 
-
+print(dp)
 print(max(dp))
 
