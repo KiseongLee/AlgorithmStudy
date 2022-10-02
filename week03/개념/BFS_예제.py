@@ -49,3 +49,6 @@ def bfs(x,y):
     return data[n-1][m-1]
 
 print(bfs(0,0))
+
+
+
